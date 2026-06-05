@@ -1,5 +1,33 @@
 # NHS.UK frontend Changelog
 
+## Unreleased
+
+Note: This release was created from the `support/10.x` branch.
+
+### :new: **New features**
+
+#### Add a 'headingLevel' Nunjucks option to labels and legends
+
+The Nunjucks option `isPageHeading` sets whether the label or legend also acts as the heading for the page.
+
+We've added a new `headingLevel` Nunjucks option as a replacement for `isPageHeading` when a custom heading level is necessary, for example when a label or legend acts as the heading for a landmark:
+
+```patch
+<aside>
+  {{ input({
+    label: {
+      text: 'Search',
+-     isPageHeading: true
++     headingLevel: 2
+    }
+  }) }}
+
+  <!-- // … -->
+</aside>
+```
+
+This was added in [pull request #1670: Add label and legend `headingLevel` option](https://github.com/nhsuk/nhsuk-frontend/pull/1670).
+
 ## 10.5.1 - 3 June 2026
 
 Note: This release was created from the `support/10.x` branch.
