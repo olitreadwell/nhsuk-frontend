@@ -80,6 +80,9 @@ export class ConfigurableComponent extends Component {
     if (errors[0]) {
       throw new ConfigError(formatErrorMessage(childConstructor, errors[0]))
     }
+
+    childConstructor.checkSupport(this.$root, this.config)
+    this.setInitialised()
   }
 
   /**
@@ -95,6 +98,15 @@ export class ConfigurableComponent extends Component {
    */
   configOverride(_datasetConfig) {
     return {}
+  }
+
+  /**
+   * Validate whether component is supported
+   *
+   * @type {typeof Component.checkSupport}
+   */
+  static checkSupport(_$root, _config) {
+    Component.checkSupport(_$root, _config)
   }
 }
 
