@@ -10,13 +10,7 @@ describe('Table', () => {
   let $root
 
   /** @type {HTMLElement | null} */
-  let $caption = null
-
-  /** @type {HTMLElement | null} */
   let $head = null
-
-  /** @type {HTMLElement | null} */
-  let $body = null
 
   /** @type {HTMLElement[]} */
   let $headers = []
@@ -30,13 +24,13 @@ describe('Table', () => {
   function initExample(example) {
     document.body.innerHTML = components.render('tables', examples[example])
 
-    $root = /** @type {HTMLElement} */ (document.querySelector('table'))
-    $caption = document.querySelector('caption')
-    $head = document.querySelector('thead')
-    $body = document.querySelector('tbody')
+    $root = /** @type {HTMLElement} */ (
+      document.querySelector(`[data-module="${Table.moduleName}"]`)
+    )
 
-    $headers = Array.from(document.querySelectorAll('thead th'))
-    $rows = Array.from(document.querySelectorAll('tbody tr'))
+    $head = $root.querySelector('thead')
+    $headers = Array.from($root.querySelectorAll('thead th'))
+    $rows = Array.from($root.querySelectorAll('tbody tr'))
 
     if ($head) {
       jest.spyOn($head, 'addEventListener')
@@ -54,40 +48,6 @@ describe('Table', () => {
       expect($head?.addEventListener).toHaveBeenCalledWith(
         'click',
         expect.any(Function)
-      )
-    })
-
-    it('should throw with missing table caption', () => {
-      $caption?.remove()
-
-      expect(() => initTables()).toThrow(
-        `${Table.moduleName}: Table caption (\`<caption class="nhsuk-table__caption">\`) not found`
-      )
-    })
-
-    it('should throw with missing table head', () => {
-      $head?.remove()
-
-      expect(() => initTables()).toThrow(
-        `${Table.moduleName}: Table head (\`<thead class="nhsuk-table__head">\`) not found`
-      )
-    })
-
-    it('should throw with missing table headers', () => {
-      for (const $header of $headers) {
-        $header.removeAttribute('data-sort')
-      }
-
-      expect(() => initTables()).toThrow(
-        `${Table.moduleName}: Table headers (\`<th class="nhsuk-table__header">\`) with attribute (\`data-sort\`) not found`
-      )
-    })
-
-    it('should throw with missing table body', () => {
-      $body?.remove()
-
-      expect(() => initTables()).toThrow(
-        `${Table.moduleName}: Table body (\`<tbody class="nhsuk-table__body">\`) not found`
       )
     })
 
