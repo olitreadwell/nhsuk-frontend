@@ -1,4 +1,3 @@
-@use "sass:color";
 @use "../../core/settings" as *;
 @use "../../core/tools" as *;
 @use "../../core/helpers" as *;
@@ -9,72 +8,78 @@
 /// @group components/table
 ////
 
-$nhsuk-table-overflow-colour: nhsuk-colour("grey-3");
+$nhsuk-table-scroll-offset: 6px;
+$nhsuk-table-scroll-shadow-width: nhsuk-spacing(3);
 
 @include nhsuk-exports("nhsuk/components/table") {
-  // Scrolling container
-  //
-  // 1. Establish an inline-size container so that children can use cqi units
-  //    to size themselves relative to the visible container width rather than
-  //    the (potentially wider) scrolling content.
-  // 2. Visual scroll indicators use background-attachment:
-  //    'local' attachment to scroll with content (hiding shadow at edges),
-  //    'scroll' attachment to stay fixed to container.
-  //    Left/right covers hide shadows when scrolled to start/end.
-  //    Left/right indicator lines show scroll availability.
-  // 3. Indicators don't show in forced-colors mode. Use borders instead
+  .nhsuk-table-wrapper {
+    position: relative;
+    margin: (-$nhsuk-table-scroll-offset) (-$nhsuk-table-scroll-offset) 0;
+    @include nhsuk-responsive-margin(7, "bottom", $adjustment: - $nhsuk-gutter-half);
 
+    // Left and right shadows
+    &::before,
+    &::after {
+      content: "";
+
+      position: absolute;
+      top: 0;
+
+      width: $nhsuk-table-scroll-shadow-width;
+      height: calc(100% + $nhsuk-gutter-half);
+
+      pointer-events: none;
+      opacity: 0.5;
+
+      background-repeat: no-repeat;
+      background-size: $nhsuk-table-scroll-shadow-width 100%;
+    }
+
+    &:has(.nhsuk-table--reverse)::before,
+    &:has(.nhsuk-table--reverse)::after {
+      opacity: 0.75;
+    }
+
+    // Left shadow
+    &::before {
+      left: 0;
+      background-image: radial-gradient(
+        farthest-side at 0 50%,
+        rgba($nhsuk-text-colour, 0.3),
+        rgba($nhsuk-text-colour, 0)
+      );
+    }
+
+    // Right shadow
+    &::after {
+      right: 0;
+      background-image: radial-gradient(
+        farthest-side at 100% 50%,
+        rgba($nhsuk-text-colour, 0.3),
+        rgba($nhsuk-text-colour, 0)
+      );
+      background-position: 100% 0;
+    }
+  }
+
+  .nhsuk-table-wrapper__container,
+  // Deprecated, to be removed in v11.0
   .nhsuk-table-container {
     box-sizing: border-box;
     display: block;
 
-    width: 100%;
-
-    container-type: inline-size; // [1]
+    padding: $nhsuk-table-scroll-offset;
+    padding-bottom: $nhsuk-table-scroll-offset + $nhsuk-gutter-half;
 
     overflow-x: auto;
 
-    background: // [2]
-      // Left cover — hides left shadow when scrolled to the start
-      linear-gradient(to right, $nhsuk-body-background-colour, transparent) left center / nhsuk-spacing(2) 100% local
-        no-repeat,
-      // Right cover — hides right shadow when scrolled to the end
-      linear-gradient(to left, $nhsuk-body-background-colour, transparent) right center / nhsuk-spacing(2) 100% local
-        no-repeat,
-      // Left scroll indicator line
-      linear-gradient(to bottom, rgba($nhsuk-table-overflow-colour, 0.4), rgba($nhsuk-table-overflow-colour, 0.4)) left
-        center / nhsuk-spacing(1) 100% scroll no-repeat,
-      // Right scroll indicator line
-      linear-gradient(to bottom, rgba($nhsuk-table-overflow-colour, 0.4), rgba($nhsuk-table-overflow-colour, 0.4)) right
-        center / nhsuk-spacing(1) 100% scroll no-repeat;
+    container-type: inline-size;
+    container-name: scrollable-content;
 
     &:focus-visible {
       outline: $nhsuk-focus-width solid $nhsuk-focus-colour;
       outline-offset: $nhsuk-focus-width;
       box-shadow: 0 0 0 $nhsuk-focus-width $nhsuk-focus-text-colour;
-    }
-
-    @media screen and (forced-colors: active), (-ms-high-contrast: active) {
-      background: none;
-      border-inline: $nhsuk-border-width-form-element solid $nhsuk-border-colour; // [3]
-      padding-inline: nhsuk-spacing(1);
-    }
-
-    @include nhsuk-responsive-margin(7, "bottom");
-
-    // Remove margin moved to scrolling container
-    .nhsuk-table,
-    // Deprecated, to be removed in v11.0
-    .nhsuk-table-responsive {
-      margin: 0;
-    }
-
-    // Prevent caption moving with scrolling container
-    .nhsuk-table__caption {
-      box-sizing: border-box;
-      position: sticky;
-      left: 0;
-      max-inline-size: 100cqi;
     }
   }
 
@@ -88,6 +93,11 @@ $nhsuk-table-overflow-colour: nhsuk-colour("grey-3");
 
     @include nhsuk-font($size: 19);
     @include nhsuk-responsive-margin(7, "bottom");
+
+    // Remove margin moved to scrolling container
+    .nhsuk-table-wrapper & {
+      margin: 0;
+    }
   }
 
   .nhsuk-table--compact {
@@ -143,6 +153,19 @@ $nhsuk-table-overflow-colour: nhsuk-colour("grey-3");
     @media #{nhsuk-from-breakpoint(tablet)} {
       margin-bottom: nhsuk-spacing(4) - nhsuk-spacing(3);
     }
+
+    // Prevent caption moving with scrolling container
+    @supports (max-width: 100cqw) {
+      .nhsuk-table-wrapper & {
+        position: sticky;
+        left: 2px;
+
+        // Wrap at container query width
+        max-width: calc(100cqw - 4px);
+        margin-right: 0;
+        margin-left: 0;
+      }
+    }
   }
 
   .nhsuk-table__caption--xl {
@@ -175,8 +198,8 @@ $nhsuk-table-overflow-colour: nhsuk-colour("grey-3");
     @include nhsuk-panel-with-label($nhsuk-card-background-colour, $nhsuk-text-colour, $nhsuk-border-colour);
 
     .nhsuk-table,
-    .nhsuk-table-container,
     // Deprecated, to be removed in v11.0
+    .nhsuk-table-container,
     .nhsuk-table-responsive {
       margin: 0; // [1]
     }
