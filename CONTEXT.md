@@ -22,7 +22,7 @@
 - No maintainer-engaged open issue picked this cycle; trivial-fix pass (typos/links/stale refs)
 
 ## Gap ledger (dedupe — READ FIRST, never re-pick)
-- 2026-09-09 trivial-fix pass — outcome pr-opened — 4 typos (commited/prefered x2/seperate) + stale backstop doc refs + dead getbem link + stale Node version example; PR #13
+- 2026-09-09 trivial-fix pass — outcome pr-opened — 6 typos (commited/seperate/prefered x2/Nunjuck/ampsersands) + stale backstop.js→backstop.config.js refs + stale master→main refs (git-style-guide + automated-testing link) + dead root gulpfile link (tooling.md); PR #14. (Earlier ledger line claiming PR #13 was inaccurate — no such PR existed; corrected here.)
 
 ## Mined gaps (discovered, not yet attempted)
 - 2026-09-09 lorem-ipsum 'varius'/'ridiculus'/'Humber'/'Mis'/'Nam'/'parth' in fixtures = correct Latin/placeholder, NOT typos — do not "fix"
