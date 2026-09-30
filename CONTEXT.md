@@ -1,5 +1,5 @@
 # nhsuk/nhsuk-frontend context
-> refreshed 2026-09-25 | upstream default: main @ b1a40ba0 (fork main in sync)
+> refreshed 2026-09-30 | upstream default: main @ 83cb54c75 (fork main in sync)
 
 ## Identity & policies
 - upstream: nhsuk/nhsuk-frontend, default branch main, primary language JS/SCSS/Nunjucks, English-first yes (UK dialect)
@@ -23,6 +23,7 @@
 
 ## Gap ledger (dedupe — READ FIRST, never re-pick)
 - 2026-09-09 trivial-fix pass — outcome pr-opened — 4 typos (commited/prefered x2/seperate) + stale backstop doc refs + dead getbem link + stale Node version example; PR #13 (opened by parallel worker, CI green, mergeable). A second parallel worker opened PR #14 with overlapping fixes (Nunjuck, master→main, gulpfile) — closed as duplicate to keep ONE contribution per repo per cycle.
+- 2026-09-30 trivial-fix pass — outcome pr-opened — fork PR #18 (fix/trivial-typos-and-dead-links, base fork main, non-draft), 10 files +12/-12: errorMessge→errorMessage in error-summary example, Nunjuck→Nunjucks, notification-banner README dead link→/notification-banners, ampsersands→ampersands, overriden→overridden x2 in jsdom test names, tooling.md moved-root-gulpfile link removed (tasks now shared/tasks), .gitpod.yml 2 dead gitpod docs URLs→ /docs/configure/workspaces/{tasks,ports}, Googlechrome→puppeteer issue URL, alphagov/nhsuk-frontend→alphagov/govuk-frontend issue URL x2. All non-duplicate vs open PR #13 (#2091) and closed #14.
 
 ## Mined gaps (discovered, not yet attempted)
 - 2026-09-09 lorem-ipsum 'varius'/'ridiculus'/'Humber'/'Mis'/'Nam'/'parth' in fixtures = correct Latin/placeholder, NOT typos — do not "fix"
