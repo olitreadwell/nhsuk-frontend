@@ -1,5 +1,5 @@
 # nhsuk/nhsuk-frontend context
-> refreshed 2026-09-30 | upstream default: main @ 83cb54c75 (fork main in sync)
+> refreshed 2026-10-01 | upstream default: main @ 83cb54c75 (fork main in sync)
 
 ## Identity & policies
 - upstream: nhsuk/nhsuk-frontend, default branch main, primary language JS/SCSS/Nunjucks, English-first yes (UK dialect)
@@ -19,7 +19,8 @@
 - NHS.UK service manual team; active repo, frequent dependabot + external merges
 
 ## Issue-area health
-- No maintainer-engaged open issue picked this cycle; trivial-fix pass (typos/links/stale refs)
+- No maintainer-engaged unclaimed open issue survived this cycle; self-found gap via repo-audit (test coverage)
+- In-flight maintainer work to avoid: #2102/#2121 (warning-button hidden text, colinrotherham), #2076/#2096 (small-checkbox checkmark, waqasnasir + maintainer PR), #2123 (main/container nesting discussion), #2127 (table-row attributes, unvetted feature)
 
 ## Gap ledger (dedupe — READ FIRST, never re-pick)
 - 2026-09-09 trivial-fix pass — outcome pr-opened — 4 typos (commited/prefered x2/seperate) + stale backstop doc refs + dead getbem link + stale Node version example; PR #13 (opened by parallel worker, CI green, mergeable). A second parallel worker opened PR #14 with overlapping fixes (Nunjuck, master→main, gulpfile) — closed as duplicate to keep ONE contribution per repo per cycle.
@@ -29,3 +30,5 @@
 - 2026-09-09 lorem-ipsum 'varius'/'ridiculus'/'Humber'/'Mis'/'Nam'/'parth' in fixtures = correct Latin/placeholder, NOT typos — do not "fix"
 - 2026-09-09 CHANGELOG.md historical links (pull/1260, pull/1327) 404 but are historical record — do not edit
 - 2026-09-25 repo-audit matrix run — outcome dropped, nothing staged. No maintainer-engaged unclaimed open issue survived (#2092 buttons-as-links is assigned to colinrotherham, already claimed by open PRs; the rest are PRs not issues). Repo-audit on current main @b1a40ba0: eslint + tsc clean; jsdom behaviour suite 578 pass (only a local env failure from an unbuilt dist, not a real repo gap); rendered components axe-clean (header/skip-link/error-summary/checkboxes/radios/date-input/details/warning-callout/inset-text/pagination/card = 0 real violations under axe wcag2a/aa + best-practice). FALSE POSITIVE to never re-pick: header/template.njk `nhsuk-header__account-button` and `nhsuk-header__menu-toggle` have no `type` — the account button sits inside `<form method=post>` and its implicit `type=submit` IS the intended logout submit (fixture 'Log out' -> action="#"); adding `type=button` would break logout. The repo explicitly permits implicit button types ('no-implicit-button-type': 'off' in packages/nhsuk-frontend-review/.htmlvalidate.mjs). Trivial typos (commited/prefered x2/seperate) are ALREADY staged by this fork's open PR #13 (= upstream open PR #2091, not merged) — re-fixing them would duplicate the same work. npm audit shows only dev/build-tooling vulns (marked/qs-body-parser-express/sassdoc) needing a breaking `--force` upgrade — not a clean one-dep pick. Honest conclusion: no real, verifiable, non-duplicate gap survived to PR.
+- 2026-10-01 tests-ci — measured coverage gap on `packages/nhsuk-frontend/src/nhsuk/components/file-upload/file-upload.mjs`: 62.14% lines / 27.86% branches / 36.84% functions; uncovered 216 + 220-374 (drag/drop state machine: `updateDropzoneVisibility`/`showDraggingState`/`hideDraggingState`/`onDrop`/`canFillInput`/`canDrop`/`matchesInputCapacity`/`onChange`), 424-429 (`observeDisabledState` MutationObserver) and 517-526 (`countFileItems`). Repro: `npx jest --selectProjects 'JavaScript unit tests' 'JavaScript behaviour tests' --coverage --collectCoverageFrom='packages/nhsuk-frontend/src/nhsuk/components/file-upload/file-upload.mjs' --coverageReporters=text`. Dedupe: no open/closed upstream or fork PR touches `file-upload.mjs` or `file-upload.jsdom.test.mjs`; no upstream issue for it. Proposed: add drag/drop behaviour tests. — status: proposed
+- 2026-10-01 docs — `docs/contributing/automated-testing.md` claims the visual tests run "within Docker" and that `test:visual`/`test:visual:ref` use `--docker`, but commit `3d225e0d5` ("Run visual regression tests without Docker", 2025-03-11) removed Docker and made `pretest:visual` install Playwright; no Dockerfile and no `docker` string anywhere else in the repo. Not attempted this cycle (test-coverage outranks docs-grounded). Caveat: open fork PR #13 already edits this same file (backstop.js→backstop.config.js, timestamp→bitmaps_test), so a follow-up must not collide. — status: proposed
