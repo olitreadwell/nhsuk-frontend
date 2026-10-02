@@ -202,7 +202,7 @@ describe('attributes.njk', () => {
             },
 
             // But watch out for intentionally falsy values
-            // https://github.com/alphagov/nhsuk-frontend/issues/4669
+            // https://github.com/alphagov/govuk-frontend/issues/4669
             'example-falsy-1': {
               value: '',
               optional: false
@@ -245,7 +245,7 @@ describe('attributes.njk', () => {
             },
 
             // But watch out for intentionally falsy values
-            // https://github.com/alphagov/nhsuk-frontend/issues/4669
+            // https://github.com/alphagov/govuk-frontend/issues/4669
             'example-falsy-1': {
               value: '',
               optional: true
