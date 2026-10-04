@@ -42,7 +42,7 @@ const options = {
     type: 'string',
     required: false,
     description:
-      'The count type used to count the text – `"length"` or `"words"`. Defaults to `"length"`.',
+      'The count type used to count the text – `"characters"`, `"length"` or `"words"`. Defaults to `"characters"`.',
     released: '10.5.0'
   },
   threshold: {
