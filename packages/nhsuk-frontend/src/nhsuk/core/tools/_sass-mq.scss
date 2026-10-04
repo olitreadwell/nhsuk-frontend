@@ -51,7 +51,7 @@
     @return $value;
   }
 
-  // If $value is a string and exists as a key in in $breakpoints,
+  // If $value is a string and exists as a key in $breakpoints,
   // look up and use the value of it
   @if meta.type-of($value) == "string" and map.has-key($breakpoints, $value) {
     @return map.get($breakpoints, $value);
