@@ -1,5 +1,5 @@
 # nhsuk/nhsuk-frontend context
-> refreshed 2026-10-04 | upstream default: main @ a5a69bc9a (upstream head unchanged since 2026-10-03; fork main in sync, re-verified 2026-10-04T21:20Z)
+> refreshed 2026-10-05 | upstream default: main @ a5a69bc9a (upstream head unchanged since 2026-10-03; fork main in sync, re-verified 2026-10-05T~08:00Z)
 
 ## Identity & policies
 - upstream: nhsuk/nhsuk-frontend, default branch main, primary language JS/SCSS/Nunjucks, English-first yes (UK dialect)
@@ -19,7 +19,7 @@
 - NHS.UK service manual team; active repo, frequent dependabot + external merges
 
 ## Issue-area health
-- No maintainer-engaged unclaimed open issue survived this cycle; self-found gap via repo-audit (test coverage)
+- No maintainer-engaged unclaimed open issue survived this cycle (re-checked 2026-10-05); self-found gap via repo-audit (test coverage)
 - In-flight maintainer work to avoid: #2102/#2121 (warning-button hidden text, colinrotherham), #2076/#2096 (small-checkbox checkmark, waqasnasir + maintainer PR), #2123 (main/container nesting discussion), #2127 (table-row attributes, unvetted feature)
 
 ## Gap ledger (dedupe — READ FIRST, never re-pick)
@@ -31,7 +31,10 @@
 
 - 2026-10-04 docs-grounded pass — outcome pr-opened — fork PR #22 (character-count-count-type-docs, base fork main @ a5a69bc9a, non-draft), 2 files +2/-2: character count `countType` docs drift. `packages/nhsuk-frontend/src/nhsuk/components/character-count/macro-options.mjs` listed only `"length"` or `"words"` and gave the default as `"length"`; `docs/configuration/javascript-api-reference.md` listed all three values but still showed default `"length"`. Code default is `characters` (`character-count.mjs` static defaults, landed via merge 959bc7f694 on 2026-08-14) and `countFunctions` keys are `length`/`characters`/`words`; template.njk and formatCountMessage treat only `"words"` as words and everything else as characters. Both descriptions corrected to `"characters"`, `"length"` or `"words"` with default `"characters"`. No CHANGELOG entry (precedent commit 7585b4e62, same docs-only macro-options + JS API fix). Non-duplicate vs open fork PR #13/#19/#21/#5 (none touch either file) and vs closed upstream issue #1619 (code points vs characters, different concern). Fork CI GREEN: install, build, stylelint/eslint/prettier/tsc, unit + behaviour + component + accessibility tests, package require/import, Sass matrix, Sonar.
 
+- 2026-10-05 tests-ci pass — outcome pr-opened — fork PR #23 (code-behaviour-coverage, base fork main @ a5a69bc9a, non-draft), 1 file +141: `packages/nhsuk-frontend/src/nhsuk/components/code/code.jsdom.test.mjs` adds jsdom tests for previously uncovered `code.mjs` paths — `setupButton()`/`enableButton()`/`copied()`/`reset()` no-ops without a copy button, `setupButton()` reuse of an existing screen reader status message, `copy()` reset on a rejected clipboard write, `checkSupport()` clipboard removal + `SupportError`, and the `ResizeObserver`→window-resize fallback (descriptors captured and restored in `afterEach`). Coverage before 84.41% statements / 73.68% branches / 85.52% lines → after 100% / 100% / 100%. Lint clean (`npm run lint` = types/js/css/prettier); unit + behaviour Jest 53 suites / 850 tests passing. Non-duplicate vs open fork PRs #5/#13/#19/#21/#22 and vs upstream #2001 (copy-icon feature, different intent). Test-only: no CHANGELOG entry (precedent skip-link/file-upload test-only PRs).
+
 ## Mined gaps (discovered, not yet attempted)
+- 2026-10-05 tests-ci — measured coverage gap on `packages/nhsuk-frontend/src/nhsuk/components/code/code.mjs`: 84.41% statements / 73.68% branches / 85.52% lines; uncovered `96,106,116-117,137,158,169,178,196,225-227` (ResizeObserver fallback, setupButton reuse/no-op, copied/reset no-ops, clipboard-reject reset, checkSupport clipboard removal + SupportError). Repro: `npx jest --selectProjects 'JavaScript unit tests' 'JavaScript behaviour tests' --coverage --collectCoverageFrom='packages/nhsuk-frontend/src/nhsuk/components/code/code.mjs' --coverageReporters=text`. Dedupe: `gh search prs --repo nhsuk/nhsuk-frontend` for `code.jsdom.test`/`code component coverage`/`code.mjs` returned nothing; no open/closed upstream or fork PR touches `code.mjs` or `code.jsdom.test.mjs` (open fork PRs #5/#13/#19/#21/#22 touch skip-link, docs, file-upload and character-count only). Upstream #2001 (`copy-icon`, base `support/10.x`, 2026-08-10) touches `code.mjs`/`fixtures.mjs` but is a code-icon feature, not test coverage — different intent and stale base. — status: pr-opened (fork PR #23)
 - 2026-10-03 `docs/contributing/automated-testing.md:13` tests-directory link uses `tree/master/` — re-checked live, the master ref still resolves 200, so NOT a dead link; do not "fix" master→main here.
 - 2026-09-09 lorem-ipsum 'varius'/'ridiculus'/'Humber'/'Mis'/'Nam'/'parth' in fixtures = correct Latin/placeholder, NOT typos — do not "fix"
 - 2026-09-09 CHANGELOG.md historical links (pull/1260, pull/1327) 404 but are historical record — do not edit
