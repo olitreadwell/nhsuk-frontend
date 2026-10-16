@@ -17,7 +17,7 @@ module.exports = {
     args: [
       /**
        * Workaround for 'No usable sandbox! Update your kernel' error
-       * see more https://github.com/Googlechrome/puppeteer/issues/290
+       * see more https://github.com/puppeteer/puppeteer/issues/290
        */
       '--no-sandbox',
       '--disable-setuid-sandbox',

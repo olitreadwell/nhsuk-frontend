@@ -248,7 +248,7 @@
     position: relative;
   }
 
-  // Add icon for sortable tables. These can can be buttons
+  // Add icon for sortable tables. These can be buttons
   // (client-side sorting) or links (server-side sorting).
   .nhsuk-table__header[data-sort] .nhsuk-link::after {
     content: "";

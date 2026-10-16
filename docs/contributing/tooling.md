@@ -25,7 +25,7 @@ We use [Gulp](https://gulpjs.com/) for automating common tasks.
 
 Gulp tasks are defined in:
 
-- [Project `gulpfile.mjs`](/gulpfile.mjs) and [`shared/tasks/`](/shared/tasks) folder
+- [`shared/tasks/`](/shared/tasks) folder
 - [Package `gulpfile.mjs` for NHS.UK frontend](/packages/nhsuk-frontend/gulpfile.mjs)
 - [Package `gulpfile.mjs` for the review app](/packages/nhsuk-frontend-review/gulpfile.mjs)
 

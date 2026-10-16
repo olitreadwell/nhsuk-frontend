@@ -1061,7 +1061,7 @@ This was added in [pull request #1998: Add compact option for tables](https://gi
 
 #### Add a modifier class for striped tables
 
-We've added a new `.nhsuk-table--striped` class and `striped` Nunjucks option for the [table](https://service-manual.nhs.uk/design-system/components/table) component. This adds table row backround colours on alternate rows.
+We've added a new `.nhsuk-table--striped` class and `striped` Nunjucks option for the [table](https://service-manual.nhs.uk/design-system/components/table) component. This adds table row background colours on alternate rows.
 
 ```patch
   {{ table({
@@ -1825,7 +1825,7 @@ Note: This release was created from the `support/10.x` branch.
 
 ### :wrench: **Fixes**
 
-- [#1954: Improve link styles when focused and in high constrast mode](https://github.com/nhsuk/nhsuk-frontend/pull/1954)
+- [#1954: Improve link styles when focused and in high contrast mode](https://github.com/nhsuk/nhsuk-frontend/pull/1954)
 
 ## 10.5.0 - 2 June 2026
 
@@ -4931,8 +4931,8 @@ We've made fixes to NHS.UK frontend in the following pull requests:
 ### :wrench: **Fixes**
 
 - Fix appearance of the select element for more consistency between browsers and OS ([Issue 527](https://github.com/nhsuk/nhsuk-service-manual-community-backlog/issues/527))
-- Fix appearance of disabled warning buttons ([Issue 1034]([https://github.com/nhsuk/nhsuk-service-manual-community-backlog/issues/1034]))
-- Fix reverse button text colour ([PR 1080]([https://github.com/nhsuk/nhsuk-frontend/pull/1080]))
+- Fix appearance of disabled warning buttons ([Issue 1034](https://github.com/nhsuk/nhsuk-service-manual-community-backlog/issues/1034))
+- Fix reverse button text colour ([PR 1080](https://github.com/nhsuk/nhsuk-frontend/pull/1080))
 - Fix details component requiring html param in uppercase ([PR 1090](https://github.com/nhsuk/nhsuk-frontend/pull/1090), [Issue 1089](https://github.com/nhsuk/nhsuk-frontend/issues/1089))
 - Replace image component example images to match assets used on service manual ([Issue 1091](https://github.com/nhsuk/nhsuk-frontend/issues/1091))
 
@@ -4953,7 +4953,7 @@ We've made fixes to NHS.UK frontend in the following pull requests:
 ### :wrench: **Fixes**
 
 - Fix layout bug where breadcrumb component was changing height when more than one link shown
-- Fix print styling bug with emergency care card ([Issue 533]([https://github.com/nhsuk/nhsuk-service-manual-community-backlog/issues/533]))
+- Fix print styling bug with emergency care card ([Issue 533](https://github.com/nhsuk/nhsuk-service-manual-community-backlog/issues/533))
 
 ## 9.0.0 - 18 September 2024
 
@@ -5389,7 +5389,7 @@ You will only now need this:
 
 ### :wrench: **Fixes**
 
-- Updated dependancies in `package.json` & generated new `package-lock.json`
+- Updated dependencies in `package.json` & generated new `package-lock.json`
 - Changed spelling mistake `charitiest` to `charities`
 - Fixed card component example format
 
@@ -5411,7 +5411,7 @@ We've reworked the care cards component as a pattern to "Help users decide when 
 
 1. The care cards component was designed to deal with a specific problem in the context of health information. But we've seen teams use care cards in other ways and contexts with mixed results. By rewriting care cards as a pattern, we hope it's clearer what problem they're designed to solve.
 2. We're tidying up the frontend, reducing duplication in the code, making it easier to maintain and improving its performance. We're taking out things which aren't components in their own right. Care cards are a variation of the card component, used as a solution to a specific need, so we're taking them out of the frontend in a breaking change release today.
-3. Type 'immmediate' has changed to 'emergency' & 'primary' has changed to 'non-urgent'. (Help users decide when and where to get care (care cards))[https://service-manual.nhs.uk/design-system/patterns/help-users-decide-when-and-where-to-get-care]
+3. Type 'immediate' has changed to 'emergency' & 'primary' has changed to 'non-urgent'. [Help users decide when and where to get care (care cards)](https://service-manual.nhs.uk/design-system/patterns/help-users-decide-when-and-where-to-get-care)
 
 - Remove Nav A-Z component & List panel component
 
@@ -6572,7 +6572,7 @@ See more about using ES6 modules in your project in the [installing with npm - i
 
   Use the latest [Breadcrumb nunjucks macro arguments](https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/breadcrumb#nunjucks-macro) and [Breadcrumb HTML markup](https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/breadcrumb#html-markup) in your app.
 
-- Care card - Change the way triangle is generated in care cards for accessiblity purposes ([PR 269](https://github.com/nhsuk/nhsuk-frontend/pull/269))
+- Care card - Change the way triangle is generated in care cards for accessibility purposes ([PR 269](https://github.com/nhsuk/nhsuk-frontend/pull/269))
 
   Use the latest [Care card HTML markup](https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/care-card#quick-start-examples) in your app.
 

@@ -29,9 +29,9 @@ You can find a full list of other SCENARIO properties within the [BackstopJS adv
 
 ### Test commands
 
-We use [Docker](https://www.docker.com/) to run our tests within a consistent environment, this prevents cross-platform rendering issues (such as font rendering and aliasing).
+We use [Playwright](https://playwright.dev/) to run our tests within a consistent browser environment, which prevents cross-platform rendering issues (such as font rendering and aliasing).
 
-Docker is installed on the continuous integration service automatically but if you want to run any of the tests locally you will need to have Docker installed. Install docker on your machine from the [Docker Downloads Page](https://hub.docker.com/search/?type=edition&offering=community&architecture=amd64) and make sure Docker is running on your machine.
+Playwright's Chromium browser is installed before the tests run, both locally and in continuous integration, so it does not need to be set up separately.
 
 #### Run tests
 

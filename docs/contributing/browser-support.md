@@ -48,7 +48,7 @@ We test NHS.UK frontend with the following assistive technology:
 | --------------------------------------------------- | ---------------- | ---------------------------------------- |
 | JAWS (desktop screen reader)                        | 2019 or later    | Chrome or Edge (latest version)          |
 | NVDA (desktop screen reader)                        | Latest           | Chrome, Firefox or Edge (latest version) |
-| VoiceOver on iOS (mobile screen reader)             | Latest           | Safari (latest version                   |
+| VoiceOver on iOS (mobile screen reader)             | Latest           | Safari (latest version)                  |
 | TalkBack (mobile screen reader)                     | Latest           | Chrome (latest version)                  |
 | Windows Magnifier or Apple Zoom (screen magnifiers) | Latest           | Any                                      |
 | Dragon (speech recognition)                         | 15 or later      | Chrome (latest version)                  |

@@ -29,7 +29,7 @@ describe('Component', () => {
       })
     })
 
-    describe('when overriden', () => {
+    describe('when overridden', () => {
       let /** @type {HTMLElement} */ $root1
       let /** @type {HTMLElement} */ $root2
 

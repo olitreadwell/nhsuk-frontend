@@ -62,7 +62,7 @@ The count type (`'length'`, `'characters'` or `'words'`) used to count the text.
 Default:
 
 ```json5
-'length'
+'characters'
 ```
 
 ### countFunction
