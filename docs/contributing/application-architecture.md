@@ -28,7 +28,7 @@ The application generates static HTML pages to preview components, with each com
 
     - `src/`
 
-      Nunjuck (HTML) files for the component example pages that you see at http://localhost:3000/nhsuk-frontend when running the application locally and on https://nhsuk.github.io/nhsuk-frontend
+      Nunjucks (HTML) files for the component example pages that you see at http://localhost:3000/nhsuk-frontend when running the application locally and on https://nhsuk.github.io/nhsuk-frontend
 
   - `nhsuk-frontend`
 

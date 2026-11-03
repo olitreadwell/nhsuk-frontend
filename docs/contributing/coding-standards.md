@@ -126,7 +126,7 @@ BEM stands for `Block__Element--Modifier`, not `Block__Element__Element--Modifie
 
 Avoid including multiple elements when naming classes.
 
-### Using ampsersands in selectors
+### Using ampersands in selectors
 
 Create separate selectors rather using an `&` in the middle of a selector.
 
@@ -323,4 +323,4 @@ The folder structure should be:
 
 ---
 
-Next: [Testing](testing.md)
+Next: [Tooling](tooling.md)
